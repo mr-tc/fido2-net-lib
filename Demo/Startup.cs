@@ -77,8 +77,8 @@ public class Startup
         {
             FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/.well-known")),
             RequestPath = new PathString("/.well-known"),
-            DefaultContentType = "application/json"
-            //ServeUnknownFileTypes = true // serve extensionless file
+            DefaultContentType = "application/json",
+            ServeUnknownFileTypes = true // serve extensionless file
         });
         app.UseRouting();
         app.UseEndpoints(endpoints =>
