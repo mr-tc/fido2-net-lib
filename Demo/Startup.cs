@@ -78,8 +78,12 @@ public class Startup
             FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/.well-known")),
             RequestPath = new PathString("/.well-known"),
             DefaultContentType = "application/json",
-            ServeUnknownFileTypes = true // serve extensionless file
-        });
+            ServeUnknownFileTypes = true, // serve extensionless file
+            OnPrepareResponse = ctx =>
+            {
+                ctx.Context.Response.Headers.Append("Cache-Control", "no-cache");
+            }
+,        });
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
