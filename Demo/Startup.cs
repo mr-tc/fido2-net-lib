@@ -87,6 +87,5 @@ public class Startup
             endpoints.MapRazorPages();
             endpoints.MapControllers();
         });
-        
     }
 }
