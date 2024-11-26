@@ -77,7 +77,13 @@ public class AuthenticatorResponse
 
         // 11. Verify that the value of C.challenge matches the challenge that was sent to the authenticator in the create() call
         if (!Challenge.AsSpan().SequenceEqual(originalChallenge))
+        {
+            System.Diagnostics.Trace.TraceError($"###### BaseVerify: Client Challenge in byte: {Challenge}");
+            System.Diagnostics.Trace.TraceError($"###### BaseVerify: Client Challenge in as span: {Challenge.AsSpan().ToString()}");
+            System.Diagnostics.Trace.TraceError($"###### BaseVerify: Client Challenge in byte: {originalChallenge.ToString()}");
+            
             throw new Fido2VerificationException(Fido2ErrorCode.InvalidAuthenticatorResponseChallenge, Fido2ErrorMessages.InvalidAuthenticatorResponseChallenge);
+        }
 
         var fullyQualifiedOrigin = Origin.ToFullyQualifiedOrigin();
 
