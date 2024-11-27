@@ -132,6 +132,14 @@ async function registerNewCredential(newCredential) {
         }
     };
 
+    console.log("id", data.id);
+    console.log("rawId", data.rawId);
+    console.log("type", data.type);
+    console.log("extensions", data.extensions);
+    console.log("response.attestationObject", data.attestationObject);
+    console.log("response.clientDataJSON", data.clientDataJSON);
+    console.log("transports", data.transports);
+
     let response;
     try {
         response = await registerCredentialWithServer(data);
