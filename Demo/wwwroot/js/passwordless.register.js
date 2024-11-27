@@ -136,9 +136,9 @@ async function registerNewCredential(newCredential) {
     console.log("rawId", data.rawId);
     console.log("type", data.type);
     console.log("extensions", data.extensions);
-    console.log("response.attestationObject", data.attestationObject);
-    console.log("response.clientDataJSON", data.clientDataJSON);
-    console.log("transports", data.transports);
+    console.log("response.attestationObject", data.response.attestationObject);
+    console.log("response.clientDataJSON", data.response.clientDataJSON);
+    console.log("transports", data.response.transports);
 
     let response;
     try {
