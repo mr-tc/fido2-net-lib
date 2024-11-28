@@ -215,9 +215,21 @@ public class MyController : Controller
                 IsUserHandleOwnerOfCredentialIdCallback = callback
             }, cancellationToken: cancellationToken);
 
+            var users = await DemoStorage.GetUsersByCredentialIdAsync(creds.Id, new CancellationToken());
+            var user = users.First();
+            var userName = user.Name;
+            var displayName = user.DisplayName;
+
+            var response = new
+            {
+                userName,
+                displayName,
+                res
+            };
+
             // 6. Store the updated counter
             DemoStorage.UpdateCounter(res.CredentialId, res.SignCount);
-
+            
             // 7. return OK to client
             return Json(res);
         }
