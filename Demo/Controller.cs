@@ -231,7 +231,7 @@ public class MyController : Controller
             DemoStorage.UpdateCounter(res.CredentialId, res.SignCount);
             
             // 7. return OK to client
-            return Json(res);
+            return Json(response);
         }
         catch (Exception e)
         {
